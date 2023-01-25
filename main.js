@@ -1,19 +1,17 @@
-const gameEngine = new GameEngine();
+const game = new GameEngine();
 
 const ASSET_MANAGER = new AssetManager();
 
 ASSET_MANAGER.queueDownload("./walk.png");
-ASSET_MANAGER.queueDownload("./walkleft.png");
-ASSET_MANAGER.queueDownload("./walkidle.png");
 
 ASSET_MANAGER.downloadAll(() => {
 	const canvas = document.getElementById("gameWorld");
 	const ctx = canvas.getContext("2d");
 	ctx.imageSmoothingEnabled = false;
 
-	gameEngine.addEntity(new walk(gameEngine));
+	game.addEntity(new walk(game));
 
-	gameEngine.init(ctx);
+	game.init(ctx);
 
-	gameEngine.start();
+	game.start();
 });
